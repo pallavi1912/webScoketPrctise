@@ -1,0 +1,23 @@
+<!-- client side -->
+<html>
+
+<head>
+    <title>Web Socket</title>
+</head>
+
+<body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io.connect('/');
+    // receive message from the server side
+    socket.on('announcements', function(data) {
+        console.log('Got announcement:', data.message);
+    });
+    // send messsage to the client side
+    socket.emit('event', {
+        message: 'Hey, Message from client!'
+    });
+    </script>
+</body>
+
+</html>
